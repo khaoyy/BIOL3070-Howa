@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # ABSTRACT
 
-House finches are a large host body for the transmission of West Nile Virus in Salt Lake City, UT. Their large abundance and long duration of detectible viremea aid mosquitoes in the positive transmission of the disease.
+House finches are a large host body for the transmission of West Nile Virus in Salt Lake City, UT. Their large abundance and long duration of detectable viremia aid mosquitoes in the positive transmission of the disease.
 
 # BACKGROUND
 
@@ -47,13 +47,13 @@ By taking mosquitoes that were collected from the two traps types, we can then e
 
 ### PCR
 
-Once the DNA has been extracted from the mosquito, we will run a PCR in order to amplify the extracted DNA. In each well of a 96 well plate, we pipette the extracted DNA and a reagent. We also pipette a negative and positive control into two other empty wells then set up the thermocycler.
+Once the DNA has been extracted from the mosquito, we will run a PCR in order to amplify the extracted DNA. In each well of a 96-well plate, we pipette the extracted DNA and a reagent. We also pipette a negative and positive control into two other empty wells, then set up the thermocycler.
 
 The thermocycler is the machine that runs the PCR by increasing and decreasing the temperature of our samples for a certain amount of cycles in order to amplify the DNA. Once the desired run is set, we start it and wait for it to complete.
 
 ### Sequencing
 
-We are able to determine if our samples have any DNA successfully amplified after the PCR is complete by running a gel electrophoresis. We place our samples into the gel and the electricity current pulls the DNA fragments up the gel. This separates our DNA fragments that we amplified by size with smaller fragments moving further up the gel than larger fragments. Bands appear on the gel and we can compare where the sample bands are to our DNA ladder to determine the size of our DNA fragments.
+We are able to determine if our samples have any DNA successfully amplified after the PCR is complete by running a gel electrophoresis. We place our samples into the gel and the electric current pulls the DNA fragments up the gel. This separates our DNA fragments that we amplified by size, with smaller fragments moving further up the gel than larger fragments. Bands appear on the gel and we can compare where the sample bands are to our DNA ladder to determine the size of our DNA fragments.
 
 Once we know that we do have DNA, we can sequence it using MinION. By using electric currents, similar to the gel electrophoresis, we can determine the sequence of nucleotide sequences based on how the nucleic acids change the current of the electricity.
 
@@ -152,15 +152,15 @@ ggplot(hm, aes(long, lat)) +
 
 ### Interpretation - First Analysis (Viremia Duration Plot)
 
-The first plot shows a horizontal bar graph featuring many different avian species on the y-axis and a scale of days of detectable viremia ranging from 0-7 on the x-axis. This graph appears to contain two or three larger peaks in days of detectable viremia. Specifically, these peaks come from the House Finch, Great Horned Owl, and Red-Billed Gull. Larger peaks suggest a longer amount of time that there is detectable viremia in these species blood which allows for longer transmission capabilites from mosquitoes.
+The first plot shows a horizontal bar graph featuring many different avian species on the y-axis and a scale of days of detectable viremia ranging from 0-7 on the x-axis. This graph appears to contain two or three larger peaks in days of detectable viremia. Specifically, these peaks come from the House Finch, Great Horned Owl, and Red-Billed Gull. Larger peaks suggest a longer amount of time that there is detectable viremia in these species' blood, which allows for longer transmission capabilites from mosquitoes.
 
 ### Interpretation - Second Analysis (Map)
 
-This second plot shows two heat maps. The heat map on the left shows House finch blood meals while the heat map on the right shows WNV-positive pools (rate). The fact that these two maps can almost perfectly fit ontop of each other suggests that the House finch could be directly correlated to increases in WNV-positive pools, as the areas that contain more House finches also contain more WNV-positive pools.
+This second plot shows two heat maps. The heat map on the left shows House finch blood meals, while the heat map on the right shows WNV-positive pools (rate). The fact that these two maps can almost perfectly fit on top of each other suggests that the House finch could be directly correlated to increases in WNV-positive pools, as the areas that contain more House finches also contain more WNV-positive pools.
 
 # CONCLUSION
 
-As a reminder, we hypothesized that house finches serve as the primary amplifying hosts for WNV due to their high viremia duration and large presence in the Salt Lake City area. Additionally, we predicted that locations with a higher ratio of house finches in our blood host analysis are also the same locations with elevated positive tests for WNV. Based on evidence of a long detectible viremea in House finches, and the correlation between House finch blood meals and WNV-positive rates, there is evidence to suggest our prediction and hypothesis are correct.
+As a reminder, we hypothesized that house finches serve as the primary amplifying hosts for WNV due to their high viremia duration and large presence in the Salt Lake City area. Additionally, we predicted that locations with a higher ratio of house finches in our blood host analysis are also the same locations with elevated positive tests for WNV. Based on evidence of a long detectible viremia in House finches, and the correlation between House finch blood meals and WNV-positive rates, there is evidence to suggest our prediction and hypothesis are correct.
 
 # REFERENCES
 
