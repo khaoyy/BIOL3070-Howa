@@ -194,7 +194,7 @@ arrows(duration$lo, bp, duration$hi, bp,
 
 ## Second Analysis (Map)
 
-```{r, Second Analysis warning=FALSE}
+```{r, second-analysis, warning=FALSE}
 library(dplyr)
 library(tidyr)
 library(ggplot2)
