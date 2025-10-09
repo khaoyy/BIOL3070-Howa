@@ -1,7 +1,7 @@
 Warm-up mini-Report: Mosquito Blood Hosts in Salt Lake City, Utah
 ================
 Kayla Howa
-2025-10-02
+2025-10-09
 
 - [ABSTRACT](#abstract)
 - [BACKGROUND](#background)
@@ -31,10 +31,19 @@ Kayla Howa
 
 # ABSTRACT
 
-House finches are a large host body for the transmission of West Nile
-Virus in Salt Lake City, UT. Their large abundance and long duration of
-detectible viremea aid mosquitoes in the positive transmission of the
-disease.
+This report investigates the transmission of West Nile Virus (WNV) in
+Salt Lake City, UT. House finches are a large host body for the
+transmission of WNV in Salt Lake City. We hypothesize that house finches
+serve as the primary amplifying hosts for WNV due to their high viremia
+duration and large presence in the Salt Lake City area. We predict that
+locations with a higher ratio of house finches in our blood host
+analysis are also the same locations with elevated positive tests for
+WNV. Utilizing DNA extraction, PCR, and sequencing of mosquitoes, we can
+BLAST the sequence to determine what species the mosquito last fed on.
+Using this information we can determine that there is evidence to
+suggest our prediction and hypothesis are correct; their large abundance
+and long duration of detectible viremea aid mosquitoes in the positive
+transmission of the disease.
 
 # BACKGROUND
 
