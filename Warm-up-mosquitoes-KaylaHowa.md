@@ -1,11 +1,10 @@
 Warm-up mini-Report: Mosquito Blood Hosts in Salt Lake City, Utah
 ================
 Kayla Howa
-2025-10-09
+2025-10-10
 
 - [ABSTRACT](#abstract)
 - [BACKGROUND](#background)
-  - [An Intro to West Nile Virus](#an-intro-to-west-nile-virus)
 - [STUDY QUESTION & HYPOTHESIS](#study-question--hypothesis)
   - [Questions](#questions)
   - [Hypothesis](#hypothesis)
@@ -16,50 +15,64 @@ Kayla Howa
   - [PCR](#pcr)
   - [Sequencing](#sequencing)
   - [Analysis](#analysis)
-  - [Analysis that allows my other analyses to
-    work](#analysis-that-allows-my-other-analyses-to-work)
-  - [First Analysis (Viremia Duration
-    Plot)](#first-analysis-viremia-duration-plot)
-  - [Second Analysis (Map)](#second-analysis-map)
+  - [First Analysis: Horizontal Host
+    Graph](#first-analysis-horizontal-host-graph)
+  - [Second Analysis: Viremia Duration
+    Plot](#second-analysis-viremia-duration-plot)
+  - [Third Analysis: Location Heat
+    Maps](#third-analysis-location-heat-maps)
 - [DISCUSSION](#discussion)
-  - [Interpretation - First Analysis (Viremia Duration
-    Plot)](#interpretation---first-analysis-viremia-duration-plot)
-  - [Interpretation - Second Analysis
-    (Map)](#interpretation---second-analysis-map)
+  - [Interpretation - Second Analysis: Viremia Duration
+    Plot](#interpretation---second-analysis-viremia-duration-plot)
+  - [Interpretation - Third Analysis: Location Heat
+    Maps](#interpretation---third-analysis-location-heat-maps)
+  - [Limitations](#limitations)
 - [CONCLUSION](#conclusion)
 - [REFERENCES](#references)
 
 # ABSTRACT
 
 This report investigates the transmission of West Nile Virus (WNV) in
-Salt Lake City, UT. House finches are a large host body for the
-transmission of WNV in Salt Lake City. We hypothesize that house finches
-serve as the primary amplifying hosts for WNV due to their high viremia
-duration and large presence in the Salt Lake City area. We predict that
-locations with a higher ratio of house finches in our blood host
-analysis are also the same locations with elevated positive tests for
-WNV. Utilizing DNA extraction, PCR, and sequencing of mosquitoes, we can
+Salt Lake City, UT. *Haemorhous mexicanus* are a large host body for the
+transmission of WNV in Salt Lake City. We hypothesize that *H.
+mexicanus* serve as the primary amplifying hosts for WNV due to their
+high viremia duration and large presence in the Salt Lake City area. We
+predict that locations with a higher ratio of *H. mexicanus* in our
+blood host analysis are also the same locations with elevated positive
+tests for WNV.
+
+Utilizing DNA extraction, PCR, and sequencing of mosquitoes, we can
 BLAST the sequence to determine what species the mosquito last fed on.
+There is a significatnly higher porportion of *H. mexicanus* bloodmeals
+compared to all other collected species. Additionally, areas with
+increased *H. mexicanus* visitation also see an increase in WNV positive
+pools.
+
 Using this information we can determine that there is evidence to
-suggest our prediction and hypothesis are correct; their large abundance
-and long duration of detectible viremea aid mosquitoes in the positive
-transmission of the disease.
+suggest our prediction and hypothesis are correct; the large abundance
+of the *Haemorhous mexicanus* and long duration of detectible viremea in
+said *H. mexicanus* aid mosquitoes in the positive transmission of the
+disease.
 
 # BACKGROUND
 
-### An Intro to West Nile Virus
+West Nile Virus (WNV) touched down in the U.S. in New York in 1999
+(Wikimedia Foundation, 2025). WNV is primarily transmitted to people
+through the bite of an infected mosquito. The virus naturally cycles
+between mosquitoes and birds; mosquitoes become infected after feeding
+on infected birds and then transmit the virus to other birds when they
+bite. Mosquitoes also spread WNV to humans, horses, and other mammals.
+However, these hosts are considered ‘dead-end’ hosts because they do not
+develop sufficient levels of the virus in their bloodstream to pass it
+on to other mosquitoes, preventing further transmission from them
+(Centers for Disease Control and Prevention, 2024; Gemini, 2025).
 
-West Nile Virus (WNV) originated in New York in 1999 (Wikimedia
-Foundation, 2025). It is a virus that is transferred from birds, which
-are the primary host for the virus, to the mosquitoes that feed on
-infected birds. Then, WNV may be transferred to humans or a variety of
-other species that infected mosquitoes feed on.
-
-By monitoring the animals that host WNV and applying it to viremia
-duration data (Kumar et al., 2003), we can monitor and predict
-transmission risks for various areas. We capture mosquitoes in either
-gravid traps or CO2 traps. Then, we extract the blood meal DNA from them
-and analyze/sequence the DNA.
+We capture mosquitoes in either gravid traps or CO2 traps. Then, we
+extract the blood meal DNA from them and analyze/sequence the DNA. By
+monitoring the animals that host WNV and applying it to viremia duration
+data (Kumar et al., 2003), we can predict transmission risks for various
+areas and work to reduce/prevent the spread of the virus throughout the
+population.
 
 # STUDY QUESTION & HYPOTHESIS
 
@@ -125,7 +138,7 @@ Last, with our newly acquired nucleotide sequences, we can paste our
 collected sequence into BLASTn to identify what species the DNA belongs
 to!
 
-## Analysis that allows my other analyses to work
+## First Analysis: Horizontal Host Graph
 
 ``` r
 ## import counts_matrix: data.frame with column 'loc_positives' (0/1) and host columns 'host_*'
@@ -223,7 +236,7 @@ par(op)
 host_species_colors <- species_colors
 ```
 
-## First Analysis (Viremia Duration Plot)
+## Second Analysis: Viremia Duration Plot
 
 ``` r
 # Manually transcribe duration (mean, lo, hi) from the last table column
@@ -263,7 +276,7 @@ arrows(duration$lo, bp, duration$hi, bp,
 
 <img src="Warm-up-mosquitoes-KaylaHowa_files/figure-gfm/viremia-1.png" style="display: block; margin: auto auto auto 0;" />
 
-## Second Analysis (Map)
+## Third Analysis: Location Heat Maps
 
 ``` r
 library(dplyr)
@@ -328,34 +341,53 @@ ggplot(hm, aes(long, lat)) +
 
 # DISCUSSION
 
-### Interpretation - First Analysis (Viremia Duration Plot)
+### Interpretation - Second Analysis: Viremia Duration Plot
 
-The first plot shows a horizontal bar graph featuring many different
+The second plot shows a horizontal bar graph featuring many different
 avian species on the y-axis and a scale of days of detectable viremia
 ranging from 0-7 on the x-axis. This graph appears to contain two or
 three larger peaks in days of detectable viremia. Specifically, these
-peaks come from the House Finch, Great Horned Owl, and Red-Billed Gull.
-Larger peaks suggest a longer amount of time that there is detectable
-viremia in these species blood which allows for longer transmission
-capabilites from mosquitoes.
+peaks come from the *H. mexicanus*, *Bubo virginianus* (Great Horned
+Owl), and *Chroicocephalus novaehollandiae scopulinus* (Red-Billed
+Gull). Larger peaks suggest a longer amount of time that there is
+detectable viremia in these species blood which allows for longer
+transmission capabilites from mosquitoes. Longer transmission
+capabilities allows for more mosquito feeding and infection
+opportunities, which finally would increase the amount of transmited WNV
+to other species.
 
-### Interpretation - Second Analysis (Map)
+### Interpretation - Third Analysis: Location Heat Maps
 
-This second plot shows two heat maps. The heat map on the left shows
+This third plot shows two heat maps. The heat map on the left shows
 House finch blood meals while the heat map on the right shows
 WNV-positive pools (rate). The fact that these two maps can almost
-perfectly fit ontop of each other suggests that the House finch could be
-directly correlated to increases in WNV-positive pools, as the areas
-that contain more House finches also contain more WNV-positive pools.
+perfectly fit on top of each other suggests that the *H. mexicanus*
+could be directly correlated to increases in WNV-positive pools, as the
+areas that contain more *H. mexicanus* also contain more WNV-positive
+pools.
+
+### Limitations
+
+One limitation could be the locations of the mosquito traps. If most of
+the traps are in areas where *H. mexicanus* thrive, then we would have a
+bias in our collected data, skewed towards *H. mexicanus*. We would need
+to ensure that an equal amount of samples are collected from traps
+across SLC area to account for locations where *H. mexicanus* may not be
+as abundant.
+
+Second, our data have a small sample size. When you consider how many
+mosquitoes are feeding and transmitting WNV, a sample size as small as
+ours may not tell the full story of what is occuring. In the future, it
+would be ideal to collect many more samples to analyze.
 
 # CONCLUSION
 
-As a reminder, we hypothesized that house finches serve as the primary
-amplifying hosts for WNV due to their high viremia duration and large
-presence in the Salt Lake City area. Additionally, we predicted that
-locations with a higher ratio of house finches in our blood host
+As a reminder, we hypothesized that *Haemorhous mexicanus* serve as the
+primary amplifying hosts for WNV due to their high viremia duration and
+large presence in the Salt Lake City area. Additionally, we predicted
+that locations with a higher ratio of *H. mexicanus* in our blood host
 analysis are also the same locations with elevated positive tests for
-WNV. Based on evidence of a long detectible viremea in House finches,
+WNV. Based on evidence of a long detectible viremea in *H. mexicanus*,
 and the correlation between House finch blood meals and WNV-positive
 rates, there is evidence to suggest our prediction and hypothesis are
 correct.
@@ -369,3 +401,12 @@ correct.
 
 2.  Wikimedia Foundation. (2025, September 3). West Nile virus.
     Wikipedia. <https://en.wikipedia.org/wiki/West_Nile_virus>
+
+3.  Centers for Disease Control and Prevention. (2024b, May 15).
+    Transmission of west nile virus. Centers for Disease Control and
+    Prevention.
+    <https://www.cdc.gov/west-nile-virus/php/transmission/index.html>
+
+4.  Gemini. Google, version 2.5 Pro. Summarization of parts of the CDC
+    West Nile Virus transmission page. Accessed 2025, October 10.
+    <https://gemini.google.com/>
