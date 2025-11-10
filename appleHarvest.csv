@@ -1,0 +1,243 @@
+ObjectID,treeType,pruned,harvest,elevation,city
+44,Apple,Yes,Normal,5663,Heber City 
+87,Apple,Yes,Normal,5580,MIDWAY
+88,Apple,Yes,Above average,5580,MIDWAY
+89,Apple,Yes,Minimal,5580,MIDWAY
+195,Apple,No,Minimal,5500,Midway
+252,Apple,Yes,Minimal,5663,Heber City
+253,Apple,Yes,Minimal,5663,Heber City
+102,Apple,Yes,Minimal,5700,Daniel
+101,Apple,Yes,Normal,5700,Daniel
+100,Apple,Yes,Normal,5700,Daniel
+99,Apple,Yes,Normal,5700,Daniel
+98,Apple,Yes,Normal,5700,Daniel
+97,Apple,Yes,Normal,5700,Daniel
+96,Apple,Yes,Normal,5700,Daniel
+95,Apple,Yes,Normal,5700,Daniel
+94,Apple,Yes,Normal,5700,Daniel
+93,Apple,Yes,Normal,5700,Daniel
+165,Apple,Yes,Minimal,5700,Daniel
+173,Apple,Yes,,5700,Daniel
+174,Apple,Yes,,5700,Daniel
+175,Apple,Yes,Minimal,5700,Daniel
+176,Apple,Yes,,5700,Daniel
+177,Apple,Yes,Minimal,5700,Daniel
+178,Apple,Yes,Minimal,5700,Daniel
+179,Apple,Yes,Normal,5700,Daniel
+180,Apple,Yes,Minimal,5604,Heber City
+181,Apple,Yes,Minimal,5604,Heber City 
+182,Apple,Yes,Minimal,5604,Heber City
+183,Apple,Yes,,5604,Heber City
+184,Apple,Yes,,5604,Heber City 
+118,Apple,No,Above average,5600,Heber City
+119,Apple,Yes,Minimal,5600,Heber City
+120,Apple,Yes,,5600,Heber City
+121,Apple,Yes,Normal,5600,Heber City
+123,Apple,Yes,Minimal,5600,Heber City
+124,Apple,Yes,Minimal,5600,Heber City
+125,Apple,No,Above average,5600,Heber City
+126,Apple,No,,5600,Heber City
+127,Apple,No,,5600,Heber City
+128,Apple,No,,5600,Heber City
+129,Apple,Yes,Minimal,5600,Heber City
+131,Apple,Yes,Minimal,5600,Heber City
+132,Apple,Yes,Minimal,5600,Heber City
+134,Apple,Yes,Minimal,5600,Heber City
+139,Apple,Yes,Minimal,5600,Heber City
+260,Apple,No,Above average,5550,Heber City
+261,Peach,Yes,Minimal,5550,Heber City
+262,Apple,Yes,,5550,Heber City
+203,Apple,Yes,Minimal,5600,MIDWAY
+204,Apple,Yes,Minimal,5600,MIDWAY
+209,Apple,Yes,Minimal,5600,MIDWAY
+210,Apple,Yes,Normal,5600,MIDWAY
+211,Apple,Yes,Minimal,5600,MIDWAY
+112,Apple,No,Minimal,6710,Woodland
+113,Apple,No,Minimal,6710,Woodland
+115,Apple,No,Normal,6710,Woodland
+114,Apple,No,,6710,Woodland
+217,Apple,No,Normal,6720,WOODLAND
+297,Apple,No,Normal,5600,Midway
+298,Apple,No,Normal,5600,Midway
+299,Apple,Yes,Normal,5600,Midway
+300,Apple,Yes,Normal,5600,Midway
+301,Apple,Yes,Normal,5600,Midway
+302,Apple,Yes,Normal,5600,Midway
+303,Apple,Yes,Normal,5600,Midway
+2,Apple,Yes,Above average,5633,Midway
+3,Apple,Yes,Normal,5633,Midway
+6,Apple,Yes,Normal,5585,Midway
+4,Apple,Yes,Normal,5633,Midway
+15,Apple,Yes,,6080,Heber City
+16,Apple,Yes,Normal,6080,Heber City
+171,Apple,No,Minimal,6000,Heber City
+196,Apple,No,,5770,Midway 
+221,Apple,No,Normal,5600,Midway
+219,Apple,No,Normal,5600,Midway
+213,Apple,No,Normal,5600,Midway
+224,Apple,No,Normal,5600,Midway
+17,Apple,Yes,,5663,Heber City
+21,Apple,Yes,,5663,Heber City
+18,Apple,No,,5663,Heber City
+19,Apple,Yes,,5663,Heber City
+8,Apple,Yes,Normal,5400,Midway
+192,Apple,No,Normal,5400,Midway
+39,Apple,Yes,Minimal,5663,Heber City 
+40,Apple,Yes,Minimal,5663,Heber City 
+41,Apple,Yes,Normal,5663,Heber City 
+38,Apple,Yes,Minimal,5663,Heber City 
+35,Apple,Yes,Minimal,5663,Heber City
+43,Apple,Yes,Normal,5663,Heber City 
+162,Apple,Yes,Minimal,5663,Heber City 
+45,Apple,Yes,Minimal,5663,Heber City 
+49,Apple,Yes,Normal,5663,Heber city
+53,Apple,Yes,Normal,5663,Heber City 
+46,Apple,Yes,Normal,5663,Heber City 
+54,Apple,Yes,Minimal,5663,Heber City
+55,Apple,Yes,,5663,Heber City 
+48,Apple,Yes,Minimal,5663,Heber City
+163,Apple,Yes,Normal,5663,Heber City 
+172,Apple,No,Minimal,6000,Heber City
+265,Apple,Yes,Minimal,6500,Kamas
+266,Apple,Yes,,6500,Kamas
+267,Apple,Yes,,6500,Kamas
+188,Apple,Yes,Normal,7162,Park City
+189,Apple,No,Minimal,7200,Park City
+111,Apple,Yes,Normal,6700,Park City
+166,Apple,No,Minimal,6500,Park City (South Snyderville)
+167,Apple,No,Minimal,6500,Park City (South Snyderville)
+190,Apple,Yes,Normal,7000,Park City (Summit Park)
+109,Apple,Yes,,6692,Park City (Silver Creek)
+108,Apple,Yes,,6692,Park City (Silver Creek)
+103,Apple,Yes,,6692,Park City (Silver Creek)
+106,Apple,Yes,,6692,Park City (Silver Creek)
+71,Apple,Yes,Minimal,6692,Park City (Silver Creek)
+107,Apple,Yes,,6692,Park City (Silver Creek)
+110,Apple,Yes,,6692,Park City (Silver Creek)
+194,Apple,Yes,Normal,5750,MIdway
+5,Apple,Yes,Above average,5750,MIdway
+186,Apple,Yes,Minimal,5784,Heber City
+187,Apple,Yes,Minimal,5784,Heber City
+52,Apple,Yes,Normal,5663,Heber City 
+50,Apple,Yes,Normal,5663,Heber City
+51,Apple,Yes,Normal,5663,Heber City 
+56,Apple,Yes,,5663,Heber City 
+47,Apple,Yes,Normal,5663,Heber City 
+164,Apple,Yes,Minimal,5663,Heber City 
+37,Apple,Yes,Minimal,5663,Heber City 
+36,Apple,Yes,Minimal,5663,Heber City 
+22,Apple,No,,6700,Marion
+23,Apple,No,Minimal,6700,Marion
+24,Apple,No,,6700,Marion
+25,Apple,No,Minimal,6700,Marion
+26,Apple,No,,6700,Marion
+27,Apple,No,,6700,Marion
+28,Apple,No,,6700,Marion
+29,Apple,No,,6700,Marion
+228,Apple,No,Minimal,5580,Heber City
+282,Apple,No,Normal,6000,Midway
+281,Apple,No,Normal,6000,Midway
+287,Apple,No,Normal,6000,Midway
+288,Apple,No,Normal,6000,Midway
+280,Apple,No,,6000,Midway
+279,Apple,No,Minimal,6000,Midway
+278,Apple,No,,6000,Midway
+277,Apple,No,Normal,6000,Midway
+292,Apple,No,Normal,6000,Midway
+293,Apple,No,Minimal,6000,Midway
+294,Apple,No,Minimal,6000,Midway
+295,Apple,No,Minimal,6000,Midway
+283,Apple,No,,6000,Midway
+284,Apple,No,,6000,Midway
+286,Apple,No,Normal,6000,Midway
+285,Apple,No,Normal,6000,Midway
+291,Apple,No,,6000,Midway
+276,Apple,No,Normal,6000,Midway
+274,Apple,No,,6000,Midway
+273,Apple,No,,6000,Midway
+122,Apple,No,Normal,5770,Midway
+30,Apple,No,,6700,Marion
+130,Apple,No,Minimal,6500,Fruitland 
+202,Apple,No,Minimal,6500,Daniel
+11,Apple,No,Normal,6500,Midway
+10,Apple,No,Normal,6500,Midway
+9,Apple,No,Normal,6500,Midway
+215,Apple,No,,5600,Midway
+73,Apple,Yes,,6500,Park City
+74,Apple,Yes,,6500,Park City
+75,Apple,Yes,,6500,Park City
+76,Apple,Yes,,6500,Park City
+77,Apple,Yes,,6500,Park City
+79,Apple,Yes,,6500,Park City
+78,Apple,Yes,,6500,Park City
+82,Apple,Yes,,6500,Park City
+81,Apple,Yes,,6500,Park City
+80,Apple,Yes,,6500,Park City
+191,Apple,No,Minimal,5900,Wanship
+255,Apple,No,,5800,Coalville
+258,Apple,Yes,,5800,Coalville
+254,Apple,No,,5800,Coalville
+256,Apple,Yes,,5800,Coalville
+146,Apple,Yes,,6722,Woodland
+147,Apple,Yes,,6722,Woodland
+216.5,Apple,Yes,,6722,Woodland
+148,Apple,Yes,,6722,Woodland
+149,Apple,Yes,,6722,Woodland
+150,Apple,Yes,,6722,Woodland
+151,Apple,Yes,,6722,Woodland
+152,Apple,Yes,,6722,Woodland
+153,Apple,Yes,,6722,Woodland
+154,Apple,Yes,,6722,Woodland
+155,Apple,Yes,,6722,Woodland
+156,Apple,Yes,,6722,Woodland
+133,Apple,No,,6722,Woodland
+135,Apple,No,,6722,Woodland
+136,Apple,Yes,,6722,Woodland
+137,Apple,Yes,,6722,Woodland
+138,Apple,Yes,,6722,Woodland
+141,Apple,Yes,,6722,Woodland
+142,Apple,Yes,,6722,Woodland
+143,Apple,Yes,,6722,Woodland
+144,Apple,Yes,,6722,Woodland
+145,Apple,Yes,,6722,Woodland
+85,Apple,Yes,,6500,Park City
+83,Apple,Yes,,6500,Park City
+86,Apple,Yes,Minimal,6500,Park City
+216,Apple,No,,5600,Midway
+226,Apple,No,Minimal,5600,Midway
+222,Apple,No,Normal,5600,Midway
+214,Apple,No,Minimal,5600,
+296,Apple,No,,6250,Midway
+232,Apple,No,Normal,5770,Midway
+233,Apple,No,Normal,5770,Midway
+234,Apple,Yes,,5770,Midway
+208,Apple,No,,5600,MIDWAY
+68,Apple,No,,5900,Wanship
+67,Apple,No,Minimal,5900,Wanship
+72,Apple,Yes,Minimal,5616,Heber City
+220,Apple,No,Minimal,5600,Midway
+225,Apple,No,Normal,5600,Midway
+223,Apple,No,Normal,5600,Midway
+229,Apple,Yes,Normal,5600,Midway
+92,Apple,Yes,Above average,5584,Midway
+212,Apple,No,Normal,5600,Midway
+57,Apple,No,,5700,Midway
+58,Apple,No,,5700,Midway
+59,Apple,No,,5700,Midway
+60,Apple,No,,5700,Midway
+61,Apple,No,,5700,Midway
+62,Apple,No,,5700,Midway
+63,Apple,No,,5700,Midway
+64,Apple,No,,5700,Midway
+65,Apple,No,,5700,Midway
+66,Apple,No,,5700,Midway
+272,Apple,No,Normal,6000,Midway
+271,Apple,No,Normal,6000,Midway
+289,Apple,No,Normal,6000,Midway
+290,Apple,No,Normal,6000,Midway
+230,Apple,Yes,,5770,Midway
+231,Apple,Yes,,5770,Midway
+69,Apple,No,Normal,5550,midway
+70,Apple,No,Normal,5550,midway
+159,Apple,No,Above average,5584,Midway
+158,Apple,No,Above average,5584,Midway
