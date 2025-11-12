@@ -5,6 +5,9 @@ date: "`r Sys.Date()`"
 output:
   github_document:
   toc: true
+editor_options: 
+  markdown: 
+    wrap: 72
 ---
 
 ```{r setup, include=FALSE}
@@ -14,10 +17,12 @@ library(ggplot2)
 library(ggpubr)
 library(RColorBrewer)
 library(plyr)
+library(rstatix)
 
 ## Read in data set
 apples <- read.csv(file="appleHarvest.csv")
 apples$city <- NULL
+na.omit(apples)
 
 ## Change categorical variables to numeric variables
 apples$harvest <- revalue(apples$harvest, c("Minimal"="1", "Normal"="2", "Above average"="3"))
@@ -28,71 +33,128 @@ apples$pruned <- revalue(apples$pruned, c("Yes"="Y", "No"="N"))
 apples$pruned <- as.factor(apples$pruned)
 
 apples$elevation <- as.factor(apples$elevation)
-
 apples$harvest
 summary(apples$harvest)
 
-na.omit(apples)
+
 ```
 
 # ABSTRACT
 
+# BACKGROUND
+Apples held the top spot for total fruit available for consumption in 2021 (Kantor and Blazejczyk, 2023) and, according to USApple’s analysis, total U.S. apple production for the 2025/26 crop year (CY) is forecast at 11.7 billion pounds / 278.5 million bushels (USApple, 2025).\ 
+
+With apples being such a hot commodity, it is important to figure out what factors may be influencing harvest sizes. We have been provided a dataset 
 
 # STUDY QUESTION & HYPOTHESIS
 
 ## Question
+
 Does pruning trees lead to an increase in fruit yield in apple trees?
-  
+
 ## Hypothesis
-I hypothesize that pruning trees leads to an increase in fruit yield in apple trees.
+
+I hypothesize that pruning trees leads to an increase in fruit yield in
+apple trees.
 
 ## Prediction
-I predict that by pruning fruit bearing trees, such as apples, the fruit yield will increase for the following harvest season.
+
+I predict that by pruning fruit bearing trees, such as apples, the fruit
+yield will increase for the following harvest season.
 
 # METHODS
 
+
 ### Method 1
+We have fit a simple linear model to the data, with y being the response
+variable (harvest amount) and x~1~ and x~2~ being our covariate factors
+(whether the tree was pruned and tree elevation). Because the pruned covariate is categorical, dummy variables were automatically created for it. One pruned category is left out in order to prevent collinearity among the data. 
+
+The final model statement for y is:
+
+$$y = \beta_{0} + \beta_{1}x_{1} + \beta_{2}x_{2} + \beta_{3}x_{3} + \epsilon$$
+$$\epsilon \sim N(0,\sigma^2)$$
+
+where $\beta$ describes the effects of each predictor on y and
+$\epsilon$ are normally distributed residual error terms with a variance
+of $\sigma^2$.
+
 
 
 ### Method 2
+We performed a Chi-Square test of independence between our two
+variables pruned and harvest
+
+Where pruned is represented as either Yes or No, and
+
+Where harvest is represented as 1, 2, or 3: 1 = Minimal 2 = Average 3 =
+Above Average
 
 
 ### Method 3
 
-
 ### Analysis
 
 ## First Analysis
-```{r first-analysis, warning=FALSE}
-##Chi-Square Test
-chisq.test(apples$pruned, apples$harvest)
+```{r first-analysis, eval=TRUE, fig.align='left', fig.height=7, fig.width=4.75, warning=FALSE, include=TRUE}
+## Create scatterplot matrix to determine relationships
+plot(~ pruned + harvest + elevation + year, data = apples)
 
-##ANOVA
+##Create scatterplot to see relationships
+plot(apples$harvest, apples$pruned)
+plot(apples$harvest, apples$elevation)
+plot(apples$harvest, apples$year)
+     
+## Creating a linear model to try and determine whether pruning impacts apple harvest abundance
+apple_lm <- lm(harvest ~ pruned + elevation + year, data = apples)
+summary(apple_lm)
+appleResids <- apple_lm$residuals
+qqnorm(appleResids)
+shapiro.test(appleResids)
+
 
 ```
 
 ## Second Analysis
-```{r second-analysis, eval=TRUE, fig.align='left', fig.height=7, fig.width=4.75, warning=FALSE, include=TRUE}
-## Creating a linear model to try and determine whether pruning impacts apple harvest abundance
-apple_lm <- lm(harvest ~ pruned + elevation, data = apples)
-appleResids <- apple_lm$residuals
-qqnorm(appleResids)
-
+```{r second-analysis, warning=FALSE}
+## ANOVA
+options(max.print=1000000)
 appleANOVA <- aov(apple_lm)
 summary(appleANOVA)
 
-TukeyHSD(appleANOVA, "elevation")
+TukeyHSD(appleANOVA, which = "elevation")
+
 
 ```
 
 ## Third Analysis
 ```{r, third-analysis, warning=T}
-counts <- table(apples$harvest, apples$pruned)
-summary(counts)
-print(counts)
+## Pruned Plots
+countsPruned <- table(apples$harvest, apples$pruned)
+summary(countsPruned)
+print(countsPruned)
 
-barplot(counts, main = "Distribution of Harvest Quantity by Tree Pruning", 
+barplot(countsPruned, main = "Distribution of Harvest Quantity by Tree Pruning", 
         cex.sub = 0.75, sub = "Total Number of Observations = 242",xlab = "Was the Tree Pruned?", 
+        ylab = "Counts", ylim = c(0,100),col = c("#117733", "#44AA99", "#88CCEE"))
+
+
+##Elevation Plots
+countsElevation <- table(apples$harvest, apples$elevation)
+summary(countsElevation)
+print(countsElevation)
+
+barplot(countsElevation, main = "Distribution of Harvest Quantity by Elevation", 
+        cex.sub = 0.75, sub = "Total Number of Observations = 144",xlab = "Was the Tree Pruned?", 
+        ylab = "Counts", ylim = c(0,100),col = c("#117733", "#44AA99", "#88CCEE"))
+
+##Year Plots
+countsYear <- table(apples$harvest, apples$year)
+summary(countsYear)
+print(countsYear)
+
+barplot(countsYear, main = "Distribution of Harvest Quantity by Elevation", 
+        cex.sub = 0.75, sub = "Total Number of Observations = 144",xlab = "Was the Tree Pruned?", 
         ylab = "Counts", ylim = c(0,100),col = c("#117733", "#44AA99", "#88CCEE"))
 
 ```
@@ -103,13 +165,20 @@ barplot(counts, main = "Distribution of Harvest Quantity by Tree Pruning",
 
 ### Interpretation - Second Analysis
 
-
 ### Limitations
 
+Issues with Alternate bearing in addition to a lack of year to year data. 
 
+Missing data within rows.
+
+Poorly labeled values
+  -> what does 'normal' 'above average' and 'minimal' mean?
+  -> what are they comparing it to?
+  -> what does it mean?
 
 # CONCLUSION
 
-
 # REFERENCES
+2025-26 apple production will reach nearly 279 million bushels. USApple. (2025, August 15). https://usapple.org/news-resources/2025-26-apple-crop-outlook 
 
+Kantor, L., & Blazejczyk, A. (2023, May 5). Apples and oranges are the top U.S. fruit choices. Apples and oranges are the top U.S. fruit choices | Economic Research Service. https://www.ers.usda.gov/data-products/chart-gallery/chart-detail?chartId=58322 
