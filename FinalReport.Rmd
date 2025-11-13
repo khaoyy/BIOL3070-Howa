@@ -44,31 +44,31 @@ summary(apples$harvest)
 # BACKGROUND
 Apples held the top spot for total fruit available for consumption in 2021 (Kantor and Blazejczyk, 2023) and, according to USApple’s analysis, total U.S. apple production for the 2025/26 crop year (CY) is forecast at 11.7 billion pounds / 278.5 million bushels (USApple, 2025).\ 
 
-With apples being such a hot commodity, it is important to figure out what factors may be influencing harvest sizes. We have been provided a dataset 
+With apples being such a hot commodity, it is important to figure out what factors may be influencing harvest sizes to ensure bountiful harvests season after season. We have been provided a dataset from the Wasatch Back Fruit Tree Project, a citizen led research project through Utah State University Extension. Their goal is to assemble data on the fruit tree varieties that can reliably produce on the Wasatch Front (About the Wasatch, n.d.).
 
 # STUDY QUESTION & HYPOTHESIS
 
-## Question
+## Questions
 
-Does pruning trees lead to an increase in fruit yield in apple trees?
+1. Does pruning trees lead to an increase in fruit yield in apple trees?
+2. Does elevation play a role in fruit yield?
+3. Do older trees produce more fruit?
 
 ## Hypothesis
 
-I hypothesize that pruning trees leads to an increase in fruit yield in
-apple trees.
+We hypothesize that pruning trees leads to an increase in fruit yield in
+apple trees. Additionally, we hypothesize that older trees will produce more fruit than younger trees, and that elevation negatively impacts harvest size. 
 
 ## Prediction
 
 I predict that by pruning fruit bearing trees, such as apples, the fruit
-yield will increase for the following harvest season.
+yield will increase for the following harvest season. Additonally, we predict that trees that are at a higher elevation will produce less bountiful harvests and that older trees will produce more fruit than younger trees. 
 
 # METHODS
-
-
 ### Method 1
 We have fit a simple linear model to the data, with y being the response
-variable (harvest amount) and x~1~ and x~2~ being our covariate factors
-(whether the tree was pruned and tree elevation). Because the pruned covariate is categorical, dummy variables were automatically created for it. One pruned category is left out in order to prevent collinearity among the data. 
+variable (harvest amount) and x~1~, x~2~, and x~3~ being our covariate factors
+(whether the tree was pruned, tree elevation, and year planted). Because the pruned covariate is categorical, dummy variables were automatically created for it. One pruned category is left out in order to prevent collinearity among the data. 
 
 The final model statement for y is:
 
@@ -80,23 +80,22 @@ $\epsilon$ are normally distributed residual error terms with a variance
 of $\sigma^2$.
 
 
-
 ### Method 2
-We performed a Chi-Square test of independence between our two
-variables pruned and harvest
-
-Where pruned is represented as either Yes or No, and
-
-Where harvest is represented as 1, 2, or 3: 1 = Minimal 2 = Average 3 =
-Above Average
-
+We performed an ANOVA on our linear model to determine whether or not there is a potential significant effect of any covariates on our response, y.
 
 ### Method 3
+We have created multiple bar plots to aid in visualization of the spread of the data. 
 
 ### Analysis
 
 ## First Analysis
 ```{r first-analysis, eval=TRUE, fig.align='left', fig.height=7, fig.width=4.75, warning=FALSE, include=TRUE}
+##Histograms
+hist(apples$harvest)
+hist(apples$year)
+hist(as.numeric(apples$elevation))
+
+
 ## Create scatterplot matrix to determine relationships
 plot(~ pruned + harvest + elevation + year, data = apples)
 
@@ -121,9 +120,6 @@ shapiro.test(appleResids)
 options(max.print=1000000)
 appleANOVA <- aov(apple_lm)
 summary(appleANOVA)
-
-TukeyHSD(appleANOVA, which = "elevation")
-
 
 ```
 
@@ -181,4 +177,8 @@ Poorly labeled values
 # REFERENCES
 2025-26 apple production will reach nearly 279 million bushels. USApple. (2025, August 15). https://usapple.org/news-resources/2025-26-apple-crop-outlook 
 
+About the Wasatch Back Fruit Tree Project. Utah State University. (n.d.). https://extension.usu.edu/wasatch/WBFTP_about 
+
 Kantor, L., & Blazejczyk, A. (2023, May 5). Apples and oranges are the top U.S. fruit choices. Apples and oranges are the top U.S. fruit choices | Economic Research Service. https://www.ers.usda.gov/data-products/chart-gallery/chart-detail?chartId=58322 
+
+
