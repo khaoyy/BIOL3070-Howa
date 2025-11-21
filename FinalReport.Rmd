@@ -41,34 +41,47 @@ summary(apples$harvest)
 
 # ABSTRACT
 
-# BACKGROUND
-Apples held the top spot for total fruit available for consumption in 2021 (Kantor and Blazejczyk, 2023) and, according to USApple’s analysis, total U.S. apple production for the 2025/26 crop year (CY) is forecast at 11.7 billion pounds / 278.5 million bushels (USApple, 2025).\ 
 
-With apples being such a hot commodity, it is important to figure out what factors may be influencing harvest sizes to ensure bountiful harvests season after season. We have been provided a dataset from the Wasatch Back Fruit Tree Project, a citizen led research project through Utah State University Extension. Their goal is to assemble data on the fruit tree varieties that can reliably produce on the Wasatch Front (About the Wasatch, n.d.).
+
+# BACKGROUND
+Apples held the top spot for total fruit available for consumption in
+2021 (Kantor and Blazejczyk, 2023) and, according to USApple’s analysis,
+total U.S. apple production for the 2025/26 crop year (CY) is forecast
+at 11.7 billion pounds / 278.5 million bushels (USApple, 2025). 
+
+With apples being such a hot commodity, it is important to figure out
+what factors may be influencing harvest sizes to ensure bountiful
+harvests season after season. We have been provided a dataset from the
+Wasatch Back Fruit Tree Project, a citizen led research project through
+Utah State University Extension. Their goal is to assemble data on the
+fruit tree varieties that can reliably produce on the Wasatch Front
+(About the Wasatch, n.d.).
 
 # STUDY QUESTION & HYPOTHESIS
-
 ## Questions
-
-1. Does pruning trees lead to an increase in fruit yield in apple trees?
-2. Does elevation play a role in fruit yield?
-3. Do older trees produce more fruit?
+The questions we are interested in looking into are:
+1.  Does pruning trees lead to an increase in fruit yield in apple
+    trees?
+2.  Does elevation play a role in fruit yield?
+3.  Do older trees produce more fruit?
 
 ## Hypothesis
-
 We hypothesize that pruning trees leads to an increase in fruit yield in
-apple trees. Additionally, we hypothesize that older trees will produce more fruit than younger trees, and that elevation negatively impacts harvest size. 
+apple trees. Additionally, we hypothesize that older, more mature trees will produce
+more fruit than younger trees. Last, we hypothesize that elevation negatively impacts
+harvest size.
 
 ## Prediction
+We predict that by pruning fruit bearing trees, such as apples, the fruit
+yield will increase for the following harvest season due to allowing the tree to focus on new growth. Additonally, we predict that trees that are at a higher elevation will produce less
+bountiful harvests and that older trees will produce more fruit than
+younger trees due to increased maturity.
 
-I predict that by pruning fruit bearing trees, such as apples, the fruit
-yield will increase for the following harvest season. Additonally, we predict that trees that are at a higher elevation will produce less bountiful harvests and that older trees will produce more fruit than younger trees. 
-
-# METHODS
+# METHODS & ANALYSIS
 ### Method 1
-We have fit a simple linear model to the data, with y being the response
-variable (harvest amount) and x~1~, x~2~, and x~3~ being our covariate factors
-(whether the tree was pruned, tree elevation, and year planted). Because the pruned covariate is categorical, dummy variables were automatically created for it. One pruned category is left out in order to prevent collinearity among the data. 
+Because we are unfamiliar with generalized linear models (which would be the more accurate model to use here), we have fit a simple linear regression model to the data to try and determine what factors may be making the biggest impact on fruit yield. For this model, y is the response variable (harvest amount) and x~1~, x~2~, and x~3~ are our covariate factors (whether the tree was pruned, tree elevation, and year planted).
+
+Because the pruned covariate is categorical, dummy variables were automatically created for it. Dummy variables are useful because they allow us to include categorical variables in our analysis, which would otherwise be difficult to include due to their non-numeric nature. They can also help us to control for confounding factors and improve the validity of our results (Wikimedia Foundation, 2025). One pruned category is left out in order to prevent collinearity among the data.
 
 The final model statement for y is:
 
@@ -79,27 +92,9 @@ where $\beta$ describes the effects of each predictor on y and
 $\epsilon$ are normally distributed residual error terms with a variance
 of $\sigma^2$.
 
-
-### Method 2
-We performed an ANOVA on our linear model to determine whether or not there is a potential significant effect of any covariates on our response, y.
-
-### Method 3
-We have created multiple bar plots to aid in visualization of the spread of the data. 
-
-### Analysis
-
 ## First Analysis
 ```{r first-analysis, eval=TRUE, fig.align='left', fig.height=7, fig.width=4.75, warning=FALSE, include=TRUE}
-##Histograms
-hist(apples$harvest)
-hist(apples$year)
-hist(as.numeric(apples$elevation))
-
-
-## Create scatterplot matrix to determine relationships
-plot(~ pruned + harvest + elevation + year, data = apples)
-
-##Create scatterplot to see relationships
+##Create scatterplot to see potential relationships
 plot(apples$harvest, apples$pruned)
 plot(apples$harvest, apples$elevation)
 plot(apples$harvest, apples$year)
@@ -107,12 +102,17 @@ plot(apples$harvest, apples$year)
 ## Creating a linear model to try and determine whether pruning impacts apple harvest abundance
 apple_lm <- lm(harvest ~ pruned + elevation + year, data = apples)
 summary(apple_lm)
+
 appleResids <- apple_lm$residuals
 qqnorm(appleResids)
 shapiro.test(appleResids)
-
-
 ```
+
+
+### Method 2
+We performed an ANOVA on our final linear model to determine whether or not
+there is a potential significant effect of any covariates on our
+response, y.
 
 ## Second Analysis
 ```{r second-analysis, warning=FALSE}
@@ -122,6 +122,10 @@ appleANOVA <- aov(apple_lm)
 summary(appleANOVA)
 
 ```
+
+### Method 3
+We have created multiple bar plots to aid in visualization of the spread
+of the data.
 
 ## Third Analysis
 ```{r, third-analysis, warning=T}
@@ -159,26 +163,34 @@ barplot(countsYear, main = "Distribution of Harvest Quantity by Elevation",
 
 ### Interpretation - First Analysis
 
+
 ### Interpretation - Second Analysis
+The results of the ANOVA suggest that there is no significant difference between any covariates
+in the linear model. Because of this, there is no need for further statistical analysis such as post-hoc comparisons. 
+
+### Interpretation - Third Analysis
 
 ### Limitations
+There are a few limitations that come with this data set. The first one is that apple trees may produce a heavy crop of fruit in one year and then very little to almost none the next. This is called “alternate” or “biennial bearing”. The typical pattern is 2 alternating years, but some trees may have an excessive crop one year and then very little for the next two years (University of Saskatchewan, 2018). Without knowledge about what part of this alternate bearing cycle the dataset trees are limits us to not be able to make causation claims with any of our tested factors.
 
-Issues with Alternate bearing in addition to a lack of year to year data. 
-
-Missing data within rows.
-
-Poorly labeled values
-  -> what does 'normal' 'above average' and 'minimal' mean?
-  -> what are they comparing it to?
-  -> what does it mean?
+The other limitation is with the dataset itself. There are many observations that are missing data within rows. The amount of data is inconsistent. Additonanlly, the values in the data set are poorly labeled. For example, harvest amount in the dataset is labeled as "normal", "minimal", and "above average". We don't have a reference about what any of these are supposed to suggest or what the harvest amounts are being compared to.
 
 # CONCLUSION
 
 # REFERENCES
-2025-26 apple production will reach nearly 279 million bushels. USApple. (2025, August 15). https://usapple.org/news-resources/2025-26-apple-crop-outlook 
 
-About the Wasatch Back Fruit Tree Project. Utah State University. (n.d.). https://extension.usu.edu/wasatch/WBFTP_about 
+2025-26 apple production will reach nearly 279 million bushels. USApple.
+(2025, August 15).
+<https://usapple.org/news-resources/2025-26-apple-crop-outlook>
 
-Kantor, L., & Blazejczyk, A. (2023, May 5). Apples and oranges are the top U.S. fruit choices. Apples and oranges are the top U.S. fruit choices | Economic Research Service. https://www.ers.usda.gov/data-products/chart-gallery/chart-detail?chartId=58322 
+About the Wasatch Back Fruit Tree Project. Utah State University.
+(n.d.). <https://extension.usu.edu/wasatch/WBFTP_about>
 
+Kantor, L., & Blazejczyk, A. (2023, May 5). Apples and oranges are the
+top U.S. fruit choices. Apples and oranges are the top U.S. fruit
+choices \| Economic Research Service.
+<https://www.ers.usda.gov/data-products/chart-gallery/chart-detail?chartId=58322>
 
+University of Saskatchewan. (2018, February 2). Alternate or biennial bearing on fruit trees. College of Agriculture and bioresources. https://gardening.usask.ca/articles-and-lists/articles-disorders/disorder-alternate-or-biennial-bearing-on-fruit-trees.php  
+
+Wikimedia Foundation. (2025, October 22). Dummy Variable (statistics). Wikipedia. https://en.wikipedia.org/wiki/Dummy_variable_(statistics) 
