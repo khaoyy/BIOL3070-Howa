@@ -60,85 +60,21 @@ fruit tree varieties that can reliably produce on the Wasatch Front
 # STUDY QUESTION & HYPOTHESIS
 ## Questions
 The questions we are interested in looking into are:
-1.  Does pruning trees lead to an increase in fruit yield in apple
-    trees?
-2.  Does elevation play a role in fruit yield?
-3.  Do older trees produce more fruit?
+1.How does elevation impact fruit yield?
+2.Do older trees prodcue more fruit than younger trees?
 
 ## Hypothesis
-We hypothesize that pruning trees leads to an increase in fruit yield in
-apple trees. Additionally, we hypothesize that older, more mature trees will produce
-more fruit than younger trees. Last, we hypothesize that elevation negatively impacts
-harvest size.
+We hypothesize that high elevation leads to an decrease in fruit yield in apple trees. Additionally, we hypothesize that older trees will produce more fruit than younger trees.
 
 ## Prediction
-We predict that by pruning fruit bearing trees, such as apples, the fruit
-yield will increase for the following harvest season due to allowing the tree to focus on new growth. Additonally, we predict that trees that are at a higher elevation will produce less
-bountiful harvests and that older trees will produce more fruit than
-younger trees due to increased maturity.
+We believe that elevation will lead to a decrease in fruit yield due less CO2 in the air for the tree to consume and that more mature trees will produce more fruit because they rely on new growth less. 
 
 # METHODS & ANALYSIS
 ### Method 1
-Because we are unfamiliar with generalized linear models (which would be the more accurate model to use here), we have fit a simple linear regression model to the data to try and determine what factors may be making the biggest impact on fruit yield. For this model, y is the response variable (harvest amount) and x~1~, x~2~, and x~3~ are our covariate factors (whether the tree was pruned, tree elevation, and year planted).
+We have created multiple bar plots to aid in visualization of the spread of the data. The bar plots are also useful to try to initially predict whether any of the factors we are looking into affect harvest quantity. 
 
-Because the pruned covariate is categorical, dummy variables were automatically created for it. Dummy variables are useful because they allow us to include categorical variables in our analysis, which would otherwise be difficult to include due to their non-numeric nature. They can also help us to control for confounding factors and improve the validity of our results (Wikimedia Foundation, 2025). One pruned category is left out in order to prevent collinearity among the data.
-
-The final model statement for y is:
-
-$$y = \beta_{0} + \beta_{1}x_{1} + \beta_{2}x_{2} + \beta_{3}x_{3} + \epsilon$$
-$$\epsilon \sim N(0,\sigma^2)$$
-
-where $\beta$ describes the effects of each predictor on y and
-$\epsilon$ are normally distributed residual error terms with a variance
-of $\sigma^2$.
-
-## First Analysis
-```{r first-analysis, eval=TRUE, fig.align='left', fig.height=7, fig.width=4.75, warning=FALSE, include=TRUE}
-##Create scatterplot to see potential relationships
-plot(apples$harvest, apples$pruned)
-plot(apples$harvest, apples$elevation)
-plot(apples$harvest, apples$year)
-     
-## Creating a linear model to try and determine whether pruning impacts apple harvest abundance
-apple_lm <- lm(harvest ~ pruned + elevation + year, data = apples)
-summary(apple_lm)
-
-appleResids <- apple_lm$residuals
-qqnorm(appleResids)
-shapiro.test(appleResids)
-```
-
-
-### Method 2
-We performed an ANOVA on our final linear model to determine whether or not
-there is a potential significant effect of any covariates on our
-response, y.
-
-## Second Analysis
-```{r second-analysis, warning=FALSE}
-## ANOVA
-options(max.print=1000000)
-appleANOVA <- aov(apple_lm)
-summary(appleANOVA)
-
-```
-
-### Method 3
-We have created multiple bar plots to aid in visualization of the spread
-of the data.
-
-## Third Analysis
-```{r, third-analysis, warning=T}
-## Pruned Plots
-countsPruned <- table(apples$harvest, apples$pruned)
-summary(countsPruned)
-print(countsPruned)
-
-barplot(countsPruned, main = "Distribution of Harvest Quantity by Tree Pruning", 
-        cex.sub = 0.75, sub = "Total Number of Observations = 242",xlab = "Was the Tree Pruned?", 
-        ylab = "Counts", ylim = c(0,100),col = c("#117733", "#44AA99", "#88CCEE"))
-
-
+### First Analysis
+```{r, first-analysis, warning=T}
 ##Elevation Plots
 countsElevation <- table(apples$harvest, apples$elevation)
 summary(countsElevation)
@@ -159,16 +95,53 @@ barplot(countsYear, main = "Distribution of Harvest Quantity by Elevation",
 
 ```
 
+
+### Method 2
+We have fit a simple linear regression model to the data to try and determine how our factors may be impacting fruit yield. For this model, y is the response variable (harvest amount) and x~1~ and x~2~ are our covariate factors (tree elevation, and year planted).
+
+The final model statement for y is:
+
+$$y = \beta_{0} + \beta_{1}x_{1} + \beta_{2}x_{2} + \epsilon$$
+$$\epsilon \sim N(0,\sigma^2)$$
+
+where $\beta$ describes the effects of each predictor on y and $\epsilon$ are normally distributed residual error terms with a variance of $\sigma^2$.
+
+Using our model statement, we have run a linear model to determine if any of our covariates are significantly impacting harvest amounts.
+
+### Second Analysis
+```{r second-analysis, eval=TRUE, fig.align='left', fig.height=7, fig.width=4.75, warning=FALSE, include=TRUE}
+## Creating a linear model to try and determine whether pruning impacts apple harvest abundance
+apple_lm <- lm(harvest ~ elevation + year, data = apples)
+summary(apple_lm)
+
+elevation_lm <- lm(harvest ~ elevation, data = apples)
+summary(elevation_lm)
+
+year_lm <- lm(harvest ~ year, data = apples)
+summary(year_lm)
+
+```
+
+### Method 3
+
+### Third Analysis
+```{r third-analysis, warning=FALSE}
+
+
+```
+
 # DISCUSSION
 
 ### Interpretation - First Analysis
 
 
 ### Interpretation - Second Analysis
-The results of the ANOVA suggest that there is no significant difference between any covariates
-in the linear model. Because of this, there is no need for further statistical analysis such as post-hoc comparisons. 
+
 
 ### Interpretation - Third Analysis
+
+
+
 
 ### Limitations
 There are a few limitations that come with this data set. The first one is that apple trees may produce a heavy crop of fruit in one year and then very little to almost none the next. This is called “alternate” or “biennial bearing”. The typical pattern is 2 alternating years, but some trees may have an excessive crop one year and then very little for the next two years (University of Saskatchewan, 2018). Without knowledge about what part of this alternate bearing cycle the dataset trees are limits us to not be able to make causation claims with any of our tested factors.
