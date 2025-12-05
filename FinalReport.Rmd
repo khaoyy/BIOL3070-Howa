@@ -18,6 +18,8 @@ library(ggpubr)
 library(RColorBrewer)
 library(plyr)
 library(rstatix)
+library(DescTools)
+
 
 ## Read in data set
 apples <- read.csv(file="appleHarvest.csv")
@@ -28,13 +30,9 @@ na.omit(apples)
 apples$harvest <- revalue(apples$harvest, c("Minimal"="1", "Normal"="2", "Above average"="3"))
 apples$harvest <- as.numeric(apples$harvest)
 
-## Change Yes and No to single letters
-apples$pruned <- revalue(apples$pruned, c("Yes"="Y", "No"="N"))
-apples$pruned <- as.factor(apples$pruned)
-
+## Make elevation and year factors for ANOVA testing
 apples$elevation <- as.factor(apples$elevation)
-apples$harvest
-summary(apples$harvest)
+apples$year <- as.factor(apples$year)
 
 
 ```
@@ -97,37 +95,38 @@ barplot(countsYear, main = "Distribution of Harvest Quantity by Elevation",
 
 
 ### Method 2
-We have fit a simple linear regression model to the data to try and determine how our factors may be impacting fruit yield. For this model, y is the response variable (harvest amount) and x~1~ and x~2~ are our covariate factors (tree elevation, and year planted).
+We have fit a simple linear regression model to the data for each factor to determine if either one may be impacting fruit yield. For each of the two models, y is the response variable (harvest amount) and x~1~ is the covariate factor that we are analyzing (year or elevation).
 
-The final model statement for y is:
+The final model statement for each y is:
 
-$$y = \beta_{0} + \beta_{1}x_{1} + \beta_{2}x_{2} + \epsilon$$
+$$y = \beta_{0} + \beta_{1}x_{1} + \epsilon$$
 $$\epsilon \sim N(0,\sigma^2)$$
 
 where $\beta$ describes the effects of each predictor on y and $\epsilon$ are normally distributed residual error terms with a variance of $\sigma^2$.
 
-Using our model statement, we have run a linear model to determine if any of our covariates are significantly impacting harvest amounts.
-
 ### Second Analysis
 ```{r second-analysis, eval=TRUE, fig.align='left', fig.height=7, fig.width=4.75, warning=FALSE, include=TRUE}
-## Creating a linear model to try and determine whether pruning impacts apple harvest abundance
-apple_lm <- lm(harvest ~ elevation + year, data = apples)
-summary(apple_lm)
-
+## Creating a linear model for each factor to try and determine impact on fruit harvest
 elevation_lm <- lm(harvest ~ elevation, data = apples)
 summary(elevation_lm)
 
 year_lm <- lm(harvest ~ year, data = apples)
 summary(year_lm)
-
 ```
 
 ### Method 3
+Because both the elevation linear model and the year linear model show potential 
 
 ### Third Analysis
-```{r third-analysis, warning=FALSE}
+```{r third-analysis, warning=FALSE, fig.align='center', fig.height=25, fig.width=7,}
+yearANOVA <- aov(year_lm)
+summary(yearANOVA)
 
+year_Tukey <- TukeyHSD(yearANOVA)
+print(year_Tukey)
 
+elevationANOVA <- aov(elevation_lm)
+summary(elevationANOVA)
 ```
 
 # DISCUSSION
@@ -138,15 +137,17 @@ summary(year_lm)
 ### Interpretation - Second Analysis
 
 
+
 ### Interpretation - Third Analysis
+Due to our ANOVA test for year being highly significant, but seeing no significance in the Tukey's HSD, we can conclude that one or more population means are different from each other, but we cannot draw a confident conclusion about which ones. There was no need to run a Tukey's HSD for elevation, as the ANOVA returned no signifance.
 
 
 
 
 ### Limitations
-There are a few limitations that come with this data set. The first one is that apple trees may produce a heavy crop of fruit in one year and then very little to almost none the next. This is called “alternate” or “biennial bearing”. The typical pattern is 2 alternating years, but some trees may have an excessive crop one year and then very little for the next two years (University of Saskatchewan, 2018). Without knowledge about what part of this alternate bearing cycle the dataset trees are limits us to not be able to make causation claims with any of our tested factors.
+There are a few limitations that come with this data set. The first one is that apple trees may produce a heavy crop of fruit in one year and then very little to almost none the next. This is called “alternate” or “biennial bearing”. The typical pattern is 2 alternating years, but some trees may have an excessive crop one year and then very little for the next two years (University of Saskatchewan, 2018). The lack of knowledge about what part of this alternate bearing cycle the dataset trees are in limits us to not be able to make conclusive causation claims with any of our tested factors.
 
-The other limitation is with the dataset itself. There are many observations that are missing data within rows. The amount of data is inconsistent. Additonanlly, the values in the data set are poorly labeled. For example, harvest amount in the dataset is labeled as "normal", "minimal", and "above average". We don't have a reference about what any of these are supposed to suggest or what the harvest amounts are being compared to.
+The second limitation is with the dataset itself. There are many observations that are missing data within rows. The amount of data is inconsistent. Additonanlly, the values in the data set are poorly labeled. For example, harvest amount in the dataset is labeled as "normal", "minimal", and "above average". We don't have a reference about what any of these are supposed to suggest or what the harvest amounts are being compared to.
 
 # CONCLUSION
 
@@ -167,3 +168,8 @@ choices \| Economic Research Service.
 University of Saskatchewan. (2018, February 2). Alternate or biennial bearing on fruit trees. College of Agriculture and bioresources. https://gardening.usask.ca/articles-and-lists/articles-disorders/disorder-alternate-or-biennial-bearing-on-fruit-trees.php  
 
 Wikimedia Foundation. (2025, October 22). Dummy Variable (statistics). Wikipedia. https://en.wikipedia.org/wiki/Dummy_variable_(statistics) 
+
+ChatGPT. OpenAI, version Jan 2025.
+
+
+
