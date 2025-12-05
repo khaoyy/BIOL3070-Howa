@@ -59,17 +59,17 @@ fruit tree varieties that can reliably produce on the Wasatch Front
 ## Questions
 The questions we are interested in looking into are:
 1.How does elevation impact fruit yield?
-2.Do older trees prodcue more fruit than younger trees?
+2.Do older trees produce more fruit than younger trees?
 
 ## Hypothesis
 We hypothesize that high elevation leads to an decrease in fruit yield in apple trees. Additionally, we hypothesize that older trees will produce more fruit than younger trees.
 
 ## Prediction
-We believe that elevation will lead to a decrease in fruit yield due less CO2 in the air for the tree to consume and that more mature trees will produce more fruit because they rely on new growth less. 
+We believe that elevation will lead to a decrease in fruit yield due to decreases in pollination (Ann et al., 2024), and that more mature trees will produce more fruit because they rely on new growth less. 
 
 # METHODS & ANALYSIS
 ### Method 1
-We have created multiple bar plots to aid in visualization of the spread of the data. The bar plots are also useful to try to initially predict whether any of the factors we are looking into affect harvest quantity. 
+We have created two bar plots to aid in visualization of the spread of the data. The first represents harvest yield counts on the y-axis with the elevation of the tree on the x-axis. The second plot represents the same y-axis with the year the tree was planted on the x-axsis. The bar plots are also useful to try to initially predict whether any of the factors we are looking into may affect harvest quantity before we work to determine it statistically. The dark green color represents trees that produced 'minimal' amounts of fruit, while teal and light blue represents trees that had 'normal' and 'above average' fruit yields, respectively.
 
 ### First Analysis
 ```{r, first-analysis, warning=T}
@@ -79,7 +79,7 @@ summary(countsElevation)
 print(countsElevation)
 
 barplot(countsElevation, main = "Distribution of Harvest Quantity by Elevation", 
-        cex.sub = 0.75, sub = "Total Number of Observations = 144",xlab = "Was the Tree Pruned?", 
+        cex.sub = 0.75, sub = "Plot 1", xlab = "Elevation (ft)", 
         ylab = "Counts", ylim = c(0,100),col = c("#117733", "#44AA99", "#88CCEE"))
 
 ##Year Plots
@@ -87,8 +87,8 @@ countsYear <- table(apples$harvest, apples$year)
 summary(countsYear)
 print(countsYear)
 
-barplot(countsYear, main = "Distribution of Harvest Quantity by Elevation", 
-        cex.sub = 0.75, sub = "Total Number of Observations = 144",xlab = "Was the Tree Pruned?", 
+barplot(countsYear, main = "Distribution of Harvest Quantity by Year", 
+        cex.sub = 0.75, sub = "Plot 2", xlab = "Year Planted", 
         ylab = "Counts", ylim = c(0,100),col = c("#117733", "#44AA99", "#88CCEE"))
 
 ```
@@ -132,6 +132,11 @@ summary(elevationANOVA)
 # DISCUSSION
 
 ### Interpretation - First Analysis
+Plot one sees a few spikes, particularly around estimated elevations, in feet, of 5600, 5650, 5700, 6000, and 6650. Specifically, we see quite a large spike in the 'above average' fruit yield category around that estimated 5600 mark. 
+
+Plot two sees a similar, if not slightly more, amount of peaks ranging from the year 1900 to 2024. There are a few notable peaks, particularly around the 1950 mark where there appears to be an influx of 'above average' fruit production.
+
+Based on these two plots alone, we anticipate seeing some significance related to partiular years or elevations where peaks are the highest.
 
 
 ### Interpretation - Second Analysis
@@ -159,6 +164,8 @@ The second limitation is with the dataset itself. There are many observations th
 
 About the Wasatch Back Fruit Tree Project. Utah State University.
 (n.d.). <https://extension.usu.edu/wasatch/WBFTP_about>
+
+Ann M. Fraser, Ginger R.H. Allington, Aman Luthra, Preeti Virkar, Shweta Rana, Renu Suyal, Ankita Rawat, Anmol Ratna, Kiran Cunningham, Narendra Raikwal, Anvita Pandey, Vishal Singh. Pollination deficit in apples increases with elevation. Agriculture, Ecosystems & Environment, Volume 371, 2024, 109068, ISSN 0167-8809, https://doi.org/10.1016/j.agee.2024.109068.
 
 Kantor, L., & Blazejczyk, A. (2023, May 5). Apples and oranges are the
 top U.S. fruit choices. Apples and oranges are the top U.S. fruit
