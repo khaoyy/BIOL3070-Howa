@@ -1,9 +1,22 @@
 Final Report
 ================
 Kayla Howa
-2025-12-05
+2025-12-06
 
 # ABSTRACT
+
+This study examined whether elevation and tree age (year planted)
+influence apple harvest quantity using data from the Wasatch Back Fruit
+Tree Project. We visualized yield distributions across elevations and
+planting years and then applied linear regression and ANOVA models to
+assess statistical relationships. Bar plots suggested potential
+patterns, including clusters of above average yields at certain
+elevations and planting years. However, regression models showed limited
+evidence that either elevation or year meaningfully predicts harvest
+quantity, and ANOVA results indicated significant differences among
+planting years without identifying specific group differences in
+post-hoc testing. Overall, neither factor demonstrated a robust or
+consistent effect on yield.
 
 # BACKGROUND
 
@@ -1065,25 +1078,35 @@ related to partiular years or elevations where peaks are the highest.
 
 ### Interpretation - Second Analysis
 
+We see significance in a few specific years which are worth
+investigating further. The elevation linear model only sees significance
+at the intercept which really only suggests that the intercept of the
+model is much different than 0. We can further analyze the effect of
+elevation on harvest, but it is probably not necessary.
+
 ### Interpretation - Third Analysis
 
 Due to our ANOVA test for year being highly significant, but seeing no
 significance in the Tukey’s HSD, we can conclude that one or more
 population means are different from each other, but we cannot draw a
 confident conclusion about which ones. There was no need to run a
-Tukey’s HSD for elevation, as the ANOVA returned no signifance.
+Tukey’s HSD for elevation, as the ANOVA returned no significance.
 
-### Limitations
+# CONCLUSION
 
-There are a few limitations that come with this data set. The first one
-is that apple trees may produce a heavy crop of fruit in one year and
-then very little to almost none the next. This is called “alternate” or
-“biennial bearing”. The typical pattern is 2 alternating years, but some
-trees may have an excessive crop one year and then very little for the
-next two years (University of Saskatchewan, 2018). The lack of knowledge
-about what part of this alternate bearing cycle the dataset trees are in
-limits us to not be able to make conclusive causation claims with any of
-our tested factors.
+While graphical summaries and intial linear modeling and ANOVA testing
+suggest possible impacts on year and harvest, it appears that neither
+play a large enough role on harvest quatity of apple trees to consider
+those factors statistically significant. There are a few limitations
+that come with this data set. The first one is that apple trees may
+produce a heavy crop of fruit in one year and then very little to almost
+none the next. This is called “alternate” or “biennial bearing”. The
+typical pattern is 2 alternating years, but some trees may have an
+excessive crop one year and then very little for the next two years
+(University of Saskatchewan, 2018). The lack of knowledge about what
+part of this alternate bearing cycle the dataset trees are in limits us
+to not be able to make conclusive causation claims with any of our
+tested factors.
 
 The second limitation is with the dataset itself. There are many
 observations that are missing data within rows. The amount of data is
@@ -1093,7 +1116,9 @@ labeled. For example, harvest amount in the dataset is labeled as
 about what any of these are supposed to suggest or what the harvest
 amounts are being compared to.
 
-# CONCLUSION
+In all, gathering more years of data on these trees could be helpful in
+further dertermining if the year the tree was planted and the elevation
+it lives at impact the amount of apples produced.
 
 # REFERENCES
 
@@ -1111,6 +1136,8 @@ increases with elevation. Agriculture, Ecosystems & Environment, Volume
 371, 2024, 109068, ISSN 0167-8809,
 <https://doi.org/10.1016/j.agee.2024.109068>.
 
+ChatGPT. OpenAI, version Jan 2025.
+
 Kantor, L., & Blazejczyk, A. (2023, May 5). Apples and oranges are the
 top U.S. fruit choices. Apples and oranges are the top U.S. fruit
 choices \| Economic Research Service.
@@ -1122,5 +1149,3 @@ bearing on fruit trees. College of Agriculture and bioresources.
 
 Wikimedia Foundation. (2025, October 22). Dummy Variable (statistics).
 Wikipedia. <https://en.wikipedia.org/wiki/Dummy_variable_(statistics)>
-
-ChatGPT. OpenAI, version Jan 2025.
